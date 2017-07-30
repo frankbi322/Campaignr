@@ -3,6 +3,8 @@ require('./services/passport');
 const mongoose = require('mongoose');
 // const authRoutes = require('./routes/authRoutes');
 const keys = require('./config/keys');
+require('./models/User');
+require('./services/passport');
 
 mongoose.connect(keys.mongoUri);
 
