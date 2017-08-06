@@ -23,20 +23,15 @@ passport.use(
       callbackURL: '/auth/google/callback',
       proxy: true
     },
-    (accessToken, refreshToken, profile, done) => {
-      User.findOne({
-        //function that tries to find a record with this username
-        //returns a promise
+    async (accessToken, refreshToken, profile, done) => {
+      const existingUser = await User.findOne({
         googleId: profile.id
-      }).then(existingUser => {
-        if (existingUser) {
-          done(null, existingUser); //first arg is an error.
-        } else {
-          new User({ googleId: profile.id }).save().then(user => {
-            done(null, user);
-          });
-        }
       });
+      if (existingUser) {
+        return done(null, existingUser);
+      }
+      const user = await new User({ googleId: profile.id }).save();
+      done(null, user);
     }
   )
 );
@@ -64,3 +59,5 @@ passport.use(
 //     }
 //   )
 // );
+
+//git filter-branch -f --env-filter "GIT_AUTHOR_NAME='Frank Bi'; GIT_AUTHOR_EMAIL='frankbi322@gmail.com'; GIT_COMMITTER_NAME='Frank Bi'; GIT_COMMITTER_EMAIL='frankbi322@gmail.com';" HEAD
