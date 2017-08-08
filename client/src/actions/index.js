@@ -19,6 +19,7 @@ export const fetchUser = () => async dispatch => {
   });
 };
 
+//handleToken takes a token and makes a post request to the stripe API with the token, returning an updated user model, which triggers a rerender
 export const handleToken = token => async dispatch => {
   const res = await axios.post('/api/stripe', token);
   dispatch({
