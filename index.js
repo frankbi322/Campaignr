@@ -34,6 +34,7 @@ if (process.env.NODE_ENV === 'production') {
 
   //express will serve index.html file if it doesn't recognize route
   //this will only run if the above three don't work
+  //will let react router handle this
   const path = require('path');
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
