@@ -1,0 +1,5 @@
+Billing
+
+Never accept raw cc number
+Never store cc numbers
+Always use outside payment processor (this app uses stripe)
