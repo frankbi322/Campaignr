@@ -3,3 +3,23 @@ Billing
 Never accept raw cc number
 Never store cc numbers
 Always use outside payment processor (this app uses stripe)
+
+
+*Uses Stripe to process payments. Use 4242 4242 4242 4242 and any future exp date and security code to use a test dummy card
+
+Node
+
+*Uses SendGrid as mailer
+
+*Uses MongoDB (mlab) for backend, mongoose for model management
+
+*Hosted on Heroku
+
+Various NPM packages and technologies used:
+  create-react-app
+  mongoose schema
+  Auth: cookie-session, passport, google strategy
+
+React Frontend:
+  Redux cycle,
+  React Router
