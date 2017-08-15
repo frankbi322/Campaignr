@@ -18,14 +18,24 @@ module.exports = app => {
       _user: req.user.id,
       dateSent: Date.now()
     });
+
     const mailer = new Mailer(survey, surveyTemplate(survey));
-    // mailer.send();
-    survey.save();
-    req.user.credits -= 1;
-    res.send(survey);
+    try {
+      await mailer.send();
+      await survey.save();
+      req.user.credits -= 1;
+      const user = await req.user.save();
+
+      res.send(user);
+    } catch (err) {
+      res.status(422).send(err);
+    }
   });
 
   app.get('/api/surveys', requireLogin, async (req, res) => {
-    const surveys = '';
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false
+    });
+    res.send(surveys);
   });
 };
