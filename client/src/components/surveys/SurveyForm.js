@@ -45,7 +45,7 @@ class SurveyForm extends Component {
             Cancel
           </Link>
           <button type="submit" className="teal btn-flat right white-text">
-            Submit
+            Next
             <i className="material-icons right">done</i>
           </button>
         </form>
@@ -57,7 +57,7 @@ class SurveyForm extends Component {
 function validate(values) {
   const errors = {};
 
-  errors.emails = validateEmails(values.emails || '');
+  errors.recipients = validateEmails(values.recipients || '');
 
   _.each(formFields, ({ name }) => {
     if (!values[name]) {
