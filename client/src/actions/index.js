@@ -31,6 +31,7 @@ export const submitSurvey = (values, history) => async dispatch => {
   const res = await axios.post('/api/surveys', values);
   history.push('/surveys');
   dispatch({
+    //return updated user because user should have fewer credits
     type: FETCH_USER,
     payload: res.data
   });
