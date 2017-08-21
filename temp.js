@@ -24,3 +24,19 @@ const fetchAlbums = async () => {
   const json = await res.json();
   console.log(json);
 };
+
+Survey.updateOne(
+  {
+    id: surveyId,
+    recipients: {
+      $elemMatch: {
+        email: email,
+        responded: false
+      }
+    }
+  },
+  {
+    $inc: { [choice]: 1 },
+    $set: { 'recipients.$.responded': true }
+  }
+);
