@@ -8,7 +8,7 @@ class SurveyList extends Component {
   }
 
   renderList() {
-    if (!this.props.surveys) {
+    if (this.props.surveys.length() == 0) {
       return (
         <span>
           No surveys created yet! Click the button below to create your first
