@@ -45,9 +45,7 @@ class SurveyList extends Component {
   }
 
   renderSurveys() {
-    {
-      this.renderList();
-    }
+    return this.renderList();
   }
 
   //   renderSurveys() {
