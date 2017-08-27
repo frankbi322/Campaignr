@@ -7,32 +7,47 @@ class SurveyList extends Component {
     this.props.fetchSurveys();
   }
 
-  renderSurveys() {
-    return this.props.surveys.reverse().map(survey => {
+  renderList() {
+    if (!this.props.surveys) {
       return (
-        <div className="card darken-1" key={survey._id}>
-          <div className="card-content">
-            <span className="card-title">
-              {survey.title}
-            </span>
-            <p>
-              {survey.body}
-            </p>
-            <p className="right">
-              Sent On: {new Date(survey.dateSent).toLocaleDateString()}
-            </p>
-          </div>
-          <div className="card-action">
-            <a>
-              Yes: {survey.yes}
-            </a>
-            <a>
-              No: {survey.no}
-            </a>
-          </div>
-        </div>
+        <span>
+          No surveys created yet! Click the button below to create your first
+          survey!
+        </span>
       );
-    });
+    } else {
+      return this.props.surveys.reverse().map(survey => {
+        return (
+          <div className="card darken-1" key={survey._id}>
+            <div className="card-content">
+              <span className="card-title">
+                {survey.title}
+              </span>
+              <p>
+                {survey.body}
+              </p>
+              <p className="right">
+                Sent On: {new Date(survey.dateSent).toLocaleDateString()}
+              </p>
+            </div>
+            <div className="card-action">
+              <a>
+                Yes: {survey.yes}
+              </a>
+              <a>
+                No: {survey.no}
+              </a>
+            </div>
+          </div>
+        );
+      });
+    }
+  }
+
+  renderSurveys() {
+    {
+      this.renderList();
+    }
   }
 
   //   renderSurveys() {
