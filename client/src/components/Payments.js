@@ -10,6 +10,7 @@ class Payments extends Component {
         name="Campaignr"
         description="Buying 5 credits for $5."
         amount={500}
+        card={4242424242424242}
         token={token => this.props.handleToken(token)}
         stripeKey={process.env.REACT_APP_STRIPE_KEY}
       >

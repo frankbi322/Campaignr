@@ -53,6 +53,17 @@ module.exports = app => {
     res.send(surveys);
   });
 
+  app.delete('/api/surveys/:id', requireLogin, async (req, res) => {
+    //find and delete the survey
+    Survey.remove({
+      _id: req.params.id
+    });
+    // const surveys = await Survey.find({ _user: req.user.id }).select({
+    //   recipients: false
+    // });
+    // res.send(surveys);
+  });
+
   app.post('/api/surveys/webhooks', (req, res) => {
     // console.log(req);
     // res.send({});
